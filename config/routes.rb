@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+	get 'documents/index'
+	get 'documents/new'
+	get 'documents/edit'
+	
 	get 'users/login' => 'users#index'
 	post 'users/login' => 'users#login'
 	get 'users/register' => 'users#new'
