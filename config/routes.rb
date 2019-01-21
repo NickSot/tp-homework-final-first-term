@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-	get 'documents/index' => 'documents#index'
+	root 'documents#root'
+	get 'documents/' => 'documents#index'
 	get 'documents/new' => 'documents#new'
 	post 'documents/new' => 'documents#create'
 	get 'documents/edit/:id' => 'documents#edit'

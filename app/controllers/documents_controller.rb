@@ -1,6 +1,10 @@
 class DocumentsController < ApplicationController
 	@@message = ''
 
+	def root
+		
+	end
+
 	def index
 		@msg = @@message
 	end
@@ -15,7 +19,7 @@ class DocumentsController < ApplicationController
 		if String(session[:email]) != params[:user] or String(session[:password]) != params[:pass]
 			if params[:user] != nil and params[:pass] != nil
 				@@message = 'You are not permitted to view this document!'
-				redirect_to '/documents/index'
+				redirect_to '/documents/'
 			end
 		end
 
