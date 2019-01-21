@@ -1,6 +1,8 @@
 class DocumentsController < ApplicationController
-	def index
+	@@message = ''
 
+	def index
+		@msg = @@message
 	end
 
 	def new
@@ -8,11 +10,12 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
-		# if User.where name: params[:user], password: params[:pass] == []
-		# 	if params[:user] != nil and params[:pass] != nil
-		# 		redirect_to '/documents/index'
-		# 	end
-		# end
+		if session[:email] != params[:user] and session[:password] != params[:pass]
+			if params[:user] != nil and params[:pass] != nil
+				@@message = 'You are not permitted to view this document!'
+				redirect_to '/documents/index'
+			end
+		end
 
 		@document = Document.find params[:id]
 	end

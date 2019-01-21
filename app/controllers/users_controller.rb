@@ -4,15 +4,22 @@ class UsersController < ApplicationController
 	end
 
 	def login
-		u = User.where user_params
+		u = User.where(user_params).take
 
-		if u == []
+		if u == nil
 			@message = "Credentials invalid!"
+			render 'index'
+			return
 		else
 			@message = "Successfully logged!"
 		end
 
-		session[:user] = u
+		user = User.find u.id
+
+		session[:email] = user.email
+		session[:password] = user.password
+
+		puts session[:email]
 
 		render 'index'
 	end
