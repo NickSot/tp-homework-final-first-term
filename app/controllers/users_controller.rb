@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 			@message = "Successfully logged!"
 		end
 
+		session[:user] = u
+
 		render 'index'
 	end
 

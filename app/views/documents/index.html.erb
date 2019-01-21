@@ -1,3 +1,7 @@
 <h1>Documents#index</h1>
 
-
+<ul>
+	<%Document.all.each do |d|%>
+		<li><%=link_to d.name, '/documents/show/' + String(d.id)%></li>
+	<%end%>
+</ul>
