@@ -8,6 +8,12 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
+		# if User.where name: params[:user], password: params[:pass] == []
+		# 	if params[:user] != nil and params[:pass] != nil
+		# 		redirect_to '/documents/index'
+		# 	end
+		# end
+
 		@document = Document.find params[:id]
 	end
 
