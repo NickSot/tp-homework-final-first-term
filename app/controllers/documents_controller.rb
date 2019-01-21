@@ -12,13 +12,15 @@ class DocumentsController < ApplicationController
 	end
 
 	def create
-		puts params[:document][:file].original_filename
+		file_name = params[:document][:file].original_filename
 
 		content = params[:document][:file].read
 
 		ascii_str = content.unpack("U*").map{|c|c.chr}.join
 
-		Document.create name: params[:document][:name], text: ascii_str		
+		Document.create name: file_name, text: ascii_str	
+
+		render 'index'	
 	end
 
 	def edit
@@ -26,6 +28,6 @@ class DocumentsController < ApplicationController
 	end
 
 	def document_params
-		return params.require(:document).perimit(:name, :file)
+		return params.require(:document).permit(:file)
 	end
 end

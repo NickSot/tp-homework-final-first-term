@@ -1,9 +1,9 @@
-<h1>Documents#new</h1>
+<h1>Upload a document!</h1>
+<h2>(If you want to, that is...)</h2>
 
 <%=form_for :document do |f|%>
-	<%=f.text_field :name%>
-
 	<%=f.file_field :file%>
-
+	<br>
+	<br>
 	<%=f.submit "Submit"%>
 <%end%>
