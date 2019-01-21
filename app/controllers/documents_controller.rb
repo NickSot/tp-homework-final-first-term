@@ -10,7 +10,9 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
-		if session[:email] != params[:user] and session[:password] != params[:pass]
+		puts session[:email] == params[:user]
+
+		if String(session[:email]) != params[:user] or String(session[:password]) != params[:pass]
 			if params[:user] != nil and params[:pass] != nil
 				@@message = 'You are not permitted to view this document!'
 				redirect_to '/documents/index'
