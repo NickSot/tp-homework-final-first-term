@@ -33,7 +33,11 @@ class DocumentsController < ApplicationController
 
 		ascii_str = content.unpack("U*").map{|c|c.chr}.join
 
-		Document.create name: file_name, text: ascii_str	
+		doc = Document.create name: file_name, text: ascii_str
+
+		user = User.where(email: session[:email], password: session[:password]).take
+
+		user.documents << doc	
 
 		render 'index'	
 	end
